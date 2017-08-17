@@ -49,21 +49,21 @@ public class MessageResource {
 			
 			//ProfileCompare.compare();
 
-			//logger.info("CITY: "+city+" COUNTRY: "+country);
-			//logger.info("Name: "+touristName+" Email: "+email);
+			logger.info("CITY: "+city+" COUNTRY: "+country);
+			logger.info("Name: "+touristName+" Email: "+email);
 
 			boolean userExist = CommonMethods.checkUserExist(fbId);
 
 			JSONArray photo = new JSONArray();
 			if (tourObj.has("photos")) {
 				photo = tourObj.getJSONObject("photos").optJSONArray("data");
-				//logger.info("TOURIST PHOTOS: "+photo.toString());
+				logger.info("TOURIST PHOTOS: "+photo.toString());
 			}
 
 			JSONArray tag = new JSONArray();
 			if (tourObj.has("tagged_places")) {
 				tag = tourObj.getJSONObject("tagged_places").optJSONArray("data");
-				//logger.info("TOURIST TAGGED PHOTOS: "+tag.toString());
+				logger.info("TOURIST TAGGED PHOTOS: "+tag.toString());
 			}
 
 			if (userExist == false) {
@@ -74,8 +74,6 @@ public class MessageResource {
 				UserProfileDB.editUserPersonalInfo(fbId,country,city);
 				UserProfileDB.addNewPlaces(fbId,photo,tag);
 			}
-			
-			
 			finalObj = MatchProfile.getUserData(fbId);
 
 		} catch (Exception e) {
