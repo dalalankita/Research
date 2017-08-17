@@ -47,7 +47,7 @@ public class MessageResource {
 			
 			//DummyData.addDummyData();
 			
-			ProfileCompare.compare();
+			//ProfileCompare.compare();
 
 			//logger.info("CITY: "+city+" COUNTRY: "+country);
 			//logger.info("Name: "+touristName+" Email: "+email);
@@ -66,23 +66,22 @@ public class MessageResource {
 				//logger.info("TOURIST TAGGED PHOTOS: "+tag.toString());
 			}
 
-			/*if (userExist == false) {
+			if (userExist == false) {
 				UserProfileDB.setBasicUserInfo(fbId,touristName, email, dob,gender);
 				UserProfileDB.setUserPersonalInfo(fbId, country, city);
 				ArrayList<String> poi = UserProfileDB.setPlacesVistitedInfo(photo,tag,fbId);
 			} else {
 				UserProfileDB.editUserPersonalInfo(fbId,country,city);
 				UserProfileDB.addNewPlaces(fbId,photo,tag);
-			}*/
+			}
 			
 			
-			//finalObj = MatchProfile.getUserData(fbId);
+			finalObj = MatchProfile.getUserData(fbId);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return null;
-		//return finalObj.toString();
+		return finalObj.toString();
 	}
 }
